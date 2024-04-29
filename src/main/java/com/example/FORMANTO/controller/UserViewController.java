@@ -2,7 +2,7 @@ package com.example.FORMANTO.controller;
 
 
 import com.example.FORMANTO.domain.Cart;
-import com.example.FORMANTO.domain.Product2;
+import com.example.FORMANTO.domain.Product;
 import com.example.FORMANTO.dto.CartViewResponse;
 import com.example.FORMANTO.service.CartService;
 
@@ -35,7 +35,7 @@ public class UserViewController {
         List<Cart> carts = cartService.findByCustomerId(1L);
         List<CartViewResponse> cartView = new ArrayList<>();
         carts.forEach(cart -> {
-            Product2 product = productService.findByProductId(cart.getProductId());
+            Product product = productService.findByProductId(cart.getProductId());
             cartView.add(CartViewResponse.builder()
                     .productName(product.getName())
                     .company("test")

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "product_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Product2 {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Product2 {
 
 
     @Builder
-    public Product2(Long productGroupId, String name, int price, int quantity, String imgSrc) {
+    public Product(Long productGroupId, String name, int price, int quantity, String imgSrc) {
         this.productGroupId = productGroupId;
         this.name = name;
         this.price = price;

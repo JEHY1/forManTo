@@ -6,18 +6,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.xml.stream.FactoryConfigurationError;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "review_tb")
+@Table(name = "QnA_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Review2 {
+public class QnA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "review_id", updatable = false)
-    private Long reviewId;
+    @Column(name = "qna_id", updatable = false)
+    private Long qnaId;
 
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
@@ -28,14 +29,22 @@ public class Review2 {
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 
-    @Column(name = "content", nullable = false)
-    private String content;
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    @Column(name = "question", nullable = false)
+    private String question;
+
+    @Column(name = "answer", nullable = false)
+    private String answer;
 
     @Builder
-    public Review2(Long customerId, Long productGroupId, LocalDateTime date, String content) {
+    public QnA(Long customerId, Long productGroupId, LocalDateTime date, String status, String question, String answer) {
         this.customerId = customerId;
         this.productGroupId = productGroupId;
         this.date = date;
-        this.content = content;
+        this.status = status;
+        this.question = question;
+        this.answer = answer;
     }
 }
