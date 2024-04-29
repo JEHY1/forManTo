@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class ProductViewController {
 
+
     @GetMapping("/productDetail/{id}")
     public String productDetail(@PathVariable long id){
 
         //
+
         return "product/productDetail";
     }
 
