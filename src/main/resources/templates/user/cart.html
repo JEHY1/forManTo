@@ -1,6 +1,6 @@
 <!--세정-->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -123,63 +123,97 @@
                             <th>수량</th>
                             <th>판매가</th>
                             <th>구매가</th>
-
-
                         </tr>
                         </thead>
 
                         <tbody>
-                        <tr>
+                        <tr th:each="cart : ${carts}">
                             <td><input type="checkbox" class="chk"></td>
-
                             <td style="min-width: 430px; max-width: 430px; height: 100%;  ">
                                 <img src="young.png" width="85px" height="85px">
-                                <span>메이크프렘</span>
-                                <p>[2주모공세럼]메이크프렘 엔드포어 베지놀 세럼50ml</p>
+                                <span th:text="${cart.company}"></span>
+                                <p th:text="${cart.productName}">[2주모공세럼]메이크프렘 엔드포어 베지놀 세럼50ml</p>
+
                             </td>
                             <!-- <td><select name="count" onchange="alert('수량 변경이 완료되었습니다')"> -->
                             <td><select class="priceCount" onchange="changeCount(), alert('수량 변경이 완료되었습니다')">
-                                <option value=" 1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
+
+                                <div th:if="${cart.count == 1}">
+                                    <option value="1" selected>1</option>
+                                </div>
+                                <div th:if="${cart.count != 1}">
+                                    <option value="1">1</option>
+                                </div>
+
+                                <div th:if="${cart.count == 2}">
+                                    <option value="2" selected>2</option>
+                                </div>
+                                <div th:if="${cart.count != 2}">
+                                    <option value="2">2</option>
+                                </div>
+
+                                <div th:if="${cart.count == 3}">
+                                    <option value="3" selected>1</option>
+                                </div>
+                                <div th:if="${cart.count != 3}">
+                                    <option value="3">3</option>
+                                </div>
+
+                                <div th:if="${cart.count == 4}">
+                                    <option value="4" selected>4</option>
+                                </div>
+                                <div th:if="${cart.count != 4}">
+                                    <option value="4">4</option>
+                                </div>
+
+                                <div th:if="${cart.count == 5}">
+                                    <option value="5" selected>5</option>
+                                </div>
+                                <div th:if="${cart.count != 5}">
+                                    <option value="5">5</option>
+                                </div>
+
+                                <div th:if="${cart.count == 6}">
+                                    <option value="6" selected>6</option>
+                                </div>
+                                <div th:if="${cart.count != 6}">
+                                    <option value="6">6</option>
+                                </div>
+
+                                <div th:if="${cart.count == 7}">
+                                    <option value="7" selected>1</option>
+                                </div>
+                                <div th:if="${cart.count != 7}">
+                                    <option value="7">7</option>
+                                </div>
+
+                                <div th:if="${cart.count == 8}">
+                                    <option value="8" selected>8option>
+                                </div>
+                                <div th:if="${cart.count != 8}">
+                                    <option value="8">8</option>
+                                </div>
+
+                                <div th:if="${cart.count == 9}">
+                                    <option value="9" selected>9</option>
+                                </div>
+                                <div th:if="${cart.count != 9}">
+                                    <option value="9">9</option>
+                                </div>
+
+                                <div th:if="${cart.count == 10}">
+                                    <option value="10" selected>10</option>
+                                </div>
+                                <div th:if="${cart.count != 10}">
+                                    <option value="10">10</option>
+                                </div>
+
                             </select>
                             </td>
-                            <td><span class="originalPrice">5000</span></td>
-                            <td><span class="totalPriceResult">5000</span> </td>
+                            <td><span class="originalPrice" th:text="${cart.price}"></span></td>
+                            <td><span class="totalPriceResult" th:text="${cart.price * cart.count}"></span> </td>
                         </tr>
 
-                        <tr>
-                            <td><input type="checkbox" class="chk"></td>
-
-                            <td style="min-width: 430px; max-width: 430px; height: 100%;  ">
-                                <img src="young.png" width="85px" height="85px">
-                                <span>메이크프렘</span>
-                                <p>[2주모공세럼]메이크프렘 엔드포어 베지놀 세럼50ml</p>
-                            </td>
-                            <!-- <td><select name="count" onchange="alert('수량 변경이 완료되었습니다')"> -->
-                            <td><select class="priceCount" onchange="changeCount(), alert('수량 변경이 완료되었습니다')">
-                                <option value=" 1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                            </td>
-                            <td><span class="originalPrice">5000</span></td>
-                            <td><span class="totalPriceResult">5000</span> </td>
-                        </tr>
                         <!-- <script>
                                 //아이디(1개)일때
 
@@ -280,8 +314,6 @@
 </footer>
 
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
