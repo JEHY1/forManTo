@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+.container {
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #F8F8F8;
+    padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: auto;
+    font-size: 2em;
+    color: #333;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search input[type="text"] {
+    width: 150px;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.search button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FFF;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.user a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px 0;
+}
+
+.products {
+    margin-bottom: 40px;
+}
+
+.products h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+aside {
+    width: 200px; /* 너비 조정 */
+    height: calc(100vh - 120px); /* 헤더와 푸터의 높이를 제외한 남은 공간 */
+    background-color: #f0f0f0;
+    padding: 20px;
+    position: sticky;
+    top: 70px; /* 헤더의 높이 */
+}
+
