@@ -22,11 +22,11 @@ public class ProductViewController {
         model.addAttribute("reviews", reviewService.productReviews(id));
         model.addAttribute("QnAs", qnAService.productQnA(id));
 
-        return "product/productDetail";
+        return "/product/productDetail";
     }
 
     @GetMapping("/main")
     public String home(){
-        return "product/main";
+        return "/product/main";
     }
 }
