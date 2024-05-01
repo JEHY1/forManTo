@@ -214,6 +214,38 @@
 
         /* 새로 추가된 클래스 */
 
+         .line{
+            width: 470px;
+            height: 230px;
+        }
+        .txtGdasCont{
+            width: 468px;
+            height: 200px;
+        }
+
+        .imgArea{
+              width: 450px;
+              height:90px
+        }
+
+        .imgpoto{
+          text-align: left;
+          height: 200px;
+        }
+
+
+        .topIntroduction{
+         border-bottom : solid #9999 2px;
+         height:100px;
+         text-align: left;
+
+        }
+
+        .topIntroduction img{
+         float: left;
+        }
+
+
 
     </style>
 </head>
@@ -308,75 +340,121 @@
     </aside>
 
 
-
     <!-- 메인 -->
     <main class="grid-container-main">
-        <div>
 
-            <h3 style="  text-align: left; ">QnA</h3>
-            <hr>
 
-            <form>
-                <table class="table">
-                    <thead class="table-light">
-                    <th style="min-width: 300px; max-width: 300px; height: 100%; ">상품</th>
+        <h3 style="  text-align: left; ">QnA</h3>
+        <hr>
+
+        <form method="" action="">
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th style="min-width: 300px; max-width: 300px; height: 100%; ">상품
+                    </th>
                     <th>작성기간</th>
                     <th>리뷰작성</th>
-                    </thead>
-                    <tbody>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
                     <td>
                         <img src="#" style="width: 85px; height: 85px;">
+                        <span>회사이름</span>
+                        <br>
+                        <span>제품이름</span>
+
                     </td>
-                    <td></td>
-                    <td></td>
-
-                    </tbody>
-                </table>
+                    <td>작성기간</td>
+                    <td>
 
 
-            </form>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                            리뷰작성
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">리뷰작성</h5>
+                                    </div>
 
+                                    <div class="modal-body">
+                                        <div class="topIntroduction">
+                                            <dl>
+                                                <img src="#" style="width: 85px; height: 85px;">
+                                                <dt>회사이름</dt>
+                                                <dd>제품명</dd>
+                                            </dl>
+                                        </div>
 
-            <div class="noDate">
+                                        <p style="text-align: left; padding-top : 10px">솔직한 상품 리뷰를 남겨주세요</p>
+                                        <div class="line">
+                                                    <textarea placeholder="리뷰를 작성해주세요." required
+                                                              class="txtGdasCont" cols="40" rows="10"
+                                                              id="writeReview" name="writeReviewName"></textarea>
+                                        </div>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                    리뷰작성
-                </button>
+                                        <div class="imgpoto">
+                                            <strong>포토</strong>
+                                            <ul class="imgArea">
+                                                <li>
+                                                    <div class="mb-3">
+                                                        <input class="form-control form-control-sm" id="poto1"
+                                                               type="file" name="potoName1">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="mb-3">
+                                                        <input class="form-control form-control-sm" id="poto2"
+                                                               type="file" name="potoName2">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="mb-3">
+                                                        <input class="form-control form-control-sm" id="poto3"
+                                                               type="file" name="potoName3">
+                                                    </div>
+                                                </li>
 
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id="dateExtraction"
+                                                onclick="sendData()">등록하기</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
 
+                    </td>
+                </tr>
 
 
+                </tbody>
+            </table>
 
-            <div style="height: 600px; ">
 
-                <p>공백이 없어 넣은 높이 600px</p>
-            </div>
+        </form>
+
+
+        <div style="height: 600px; ">
+
+            <p>공백이 없어 넣은 높이 600px</p>
+        </div>
 
     </main>
 
@@ -395,6 +473,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+<script src="MyPageReview.js"></script>
 
 </body>
 

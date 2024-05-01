@@ -35,7 +35,7 @@ public class UserViewController {
         List<Cart> carts = cartService.findByCustomerId(1L);
         List<CartViewResponse> cartView = new ArrayList<>();
         carts.forEach(cart -> {
-            Product product = productService.findByProductId(cart.getProductId());
+            Product product = productService.findProductByProductId(cart.getProductId());
             cartView.add(CartViewResponse.builder()
                     .productName(product.getName())
                     .company("test")

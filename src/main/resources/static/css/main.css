@@ -12,75 +12,6 @@ body {
     margin: 0 auto;
 }
 
-header {
-    background-color: #F8F8F8;
-    padding: 20px 0;
-}
-
-header .container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    margin-right: auto;
-    font-size: 2em;
-    color: #333;
-}
-
-.search {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    margin: 0 20px;
-}
-
-.search input[type="text"] {
-    width: 150px;
-    padding: 8px 15px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin-right: 10px;
-}
-
-.search button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #FFF;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.user a {
-    text-decoration: none;
-    color: #333;
-    margin-right: 20px;
-}
-
-nav {
-    background-color: #333;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #FFF;
-    font-weight: bold;
-}
-
 main {
     padding: 20px 0;
 }
@@ -107,52 +38,253 @@ main {
     text-align: center;
 }
 
-footer {
-    width: 100%;
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 20px;
-    text-align: center;
-}
-
 .main-container {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 20px;
+
+* {
+    font-size: 13px;
 }
 
-.sidebar h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+
 }
 
-.sidebar ul li {
-    margin-bottom: 10px;
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        /* "header header" */
+        "content sidebar"
+        "footer ";
+    grid-template-columns: 1fr 3fr;
+    width: 1020px;
+    margin: auto;
+    margin-top: 20px;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
+.grid-container-header {
+    display: grid;
+    /* grid-template-areas:
+    "top_util"
+    "header_inner"
+    ; */
+
+    /* grid-template-columns: 1fr 3fr; */
+}
+
+.top_util {
+    width: 900px;
+    height: 30px;
+    text-align: right;
+    margin: auto;
+    /* grid-area: top_util; */
+}
+
+.top_util a {
+    margin: 0px 0px 0px 4px;
+}
+
+.header_inner {
+    /* grid-area: header_inner; */
+    margin: auto;
+    height: 90px;
+    display: flex;
+
+    /* grid-template-columns: auto 1fr; 로고와 검색창 열 생성 */
+}
+
+.header_inner img {
+    width: 246px;
+    height: 40px;
+    margin-top: 15px;
+
+
+
+}
+
+header {
+    height: 160px;
+    grid-area: header;
+    border-bottom: 1px solid black;
+
+}
+
+.top_cartegory {
+    height: 43px;
+    border-top: 1px solid #9999;
+    text-align: center;
+
+
+}
+
+.top_cartegory a {
+    font-size: 15px;
+    margin: 5px;
+
+}
+
+.top_cartegory ul {
+    /* 카테고리 위치 더 나은 방법이 있나 */
+    justify-content: center;
+
+}
+
+
+.grid-container-aside {
+    /* display: grid; */
+    width: 130px;
+    float: left;
+    /* 왼쪽 위치 */
+    padding: 20px 0px 0px 5px;
+
+}
+
+.grid-container-main {
+    /* display: grid; */
+    /* width: 100%; */
+    float: right;
+    /* 추가: 오른쪽에 위치 */
+    padding: 20px 0px;
+
+}
+
+.category {
+    text-align: left;
+
+}
+
+
+main {
+    text-align: center;
+    grid-area: content;
+    padding: 20px;
 }
 
 aside {
-    width: 200px; /* 너비 조정 */
-    height: calc(100vh - 120px); /* 헤더와 푸터의 높이를 제외한 남은 공간 */
-    background-color: #f0f0f0;
-    padding: 20px;
-    position: sticky;
-    top: 70px; /* 헤더의 높이 */
+    grid-area: sidebar;
+    margin: 0px;
+
 }
 
+.sidebar .container {
+    position: sticky;
+}
+
+footer {
+    height: 150px;
+    grid-area: footer;
+    background-color: #9999;
+}
+
+ul {
+    line-height: 30px;
+    list-style: none;
+    padding: 0%;
+}
+
+.cart1 {
+    margin: -55px 0px 0px 90px;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+    margin-bottom: 20px;
+    margin: 0px 0px 0px 60px;
+    padding: 15px 30px 0px 20px;
+}
+
+.search input {
+    width: 300px;
+    border: 2px solid #bbb;
+    border-radius: 30px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.search img {
+    position: absolute;
+    width: 30px;
+    top: 2px;
+    right: 0px;
+    margin: 15px 0px 0px 0px;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+a:link {
+    color: black;
+
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {}
+
+a:active {
+    color: green
+}
+
+
+
+.main_table {}
+
+
+/* 테이블안 내용 가운데 정렬 */
+td {
+    vertical-align: middle;
+}
+
+
+/* 총 금액 클래스 */
+.totalPrice {
+    height: 100px;
+
+    border-top: solid 3px rgb(128, 228, 128);
+    border-bottom: solid 2px #9999;
+}
+
+.totalPrice p {
+    margin-top: 30px;
+    display: inline-block;
+    width: 220px;
+    height: 100px;
+}
+
+/* .totalPrice span{
+    display: block;
+} */
+.totalPrice span {
+    display: inline-block;
+}
+
+
+.grid-container-main li {
+    /* background-color: #e6e3e399; */
+    text-align: left;
+}
+
+.calendar {
+    height: 80px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #efecec99;
+
+}
+
+.chat-bot {
+    position: fixed;
+    margin: -5%;
+    margin-top: 3px;
+
+}

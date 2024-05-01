@@ -167,14 +167,14 @@
             </div>
             <div class="col-7">
                 <div class="container d-flex flex-column" style="min-height:500px">
-                    <div class="row" style="height: 50px">
-                        <div class="col-10" style="font-size:25px;">상품이름</div>
+                    <div class="row">
+                        <div class="col-10" style="font-size:25px;" th:text="${productGroup.name}"></div>
                         <div class="col-2">
                             <img src="#" alt="찜img">
                         </div>
                     </div>
                     <div class="row" style="height: 40px">
-                        <div class="col" style="font-size: 25px; color: red;">가격</div>
+                        <div class="col" style="font-size: 25px; color: red;" th:text="${productGroup.price} + '원~'"></div>
                     </div>
                     <div class="row" style="height: 25px; margin-top: 20px;">
                         <div class="col-md-auto" style="font-weight: bolder;">배송정보</div>
@@ -233,13 +233,16 @@
                                     </div>
                                 </li> -->
 
-                                <li th:each="product : ${products}" class="dropdown-item">
-                                    <div class="container item-btns">
+                                <li th:each="product : ${products}" class="dropdown-item" >
+                                    <input type="hidden" class="productNames" th:value="${product.name}">
+                                    <input type="hidden" class="productIds" th:value="${product.productId}">
+                                    <input type="hidden" class="productPrices" th:value="${product.price}">
+                                    <div class="container item-btns" style="padding:0px;">
                                         <div class="row">
-                                            <div class="col-4">
-                                                <img src="#" alt="상품 이미지">
-                                            </div>
-                                            <div class="col-8 productNames" th:text="${product.name}" th:value="${product.name}"></div>
+                                            <img src="#" alt="상품 이미지" class="col-3" style="height: 60px; width:60px; background-color:gray;">
+
+                                            <div class="col small align-items-center d-flex" th:text="${product.name}"></div>
+                                            <div class="col-3 d-flex align-items-center justify-content-end" th:text="${product.price} + '원'" th:value="${product.price}"></div>
                                         </div>
                                     </div>
                                 </li>
@@ -257,7 +260,8 @@
                             <p>상품금액합계</p>
                         </div>
                         <div class="col" id="#">
-                            <p style="text-align: right;">0원</p>
+                            <input type="hidden" id="totalPrice" value=0>
+                            <p style="text-align: right;" id="totalPriceText">0원</p>
                         </div>
                         <hr>
                     </div>
@@ -322,57 +326,58 @@
                         <hr>
                         <hr>
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">내용물의 용량 또는 중량</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.weight}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">제품 주요 사양</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.summary}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">사용기한(또는 개봉 후 사용기간)</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.period}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">사용방법</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoininfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfofoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.manual}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">화장품제조업자,화장품책임판매업자 및 맞춤형화장품판매업자</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.manufacturer}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">제조국</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.country}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">화장품법에 따라 기재해야 하는 모든 성분</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.details}"></p></div>
+
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">기능성 화장품 식품의약품안전처 심사필 여부</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">화장품법에 따른 기능성 화장품 심사(또는 보고)를 필함</p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">품질보증기준</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.assurance}"></p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">소비자상담 전화번호</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">상담번호 --- ----- ----</p></div>
                         <hr>
                     </div>
                     <div class="row">
                         <div class="col-2" style="background-color: gainsboro;"><p style="text-align: left; font-weight: bolder;">사용할 때의 주의사항</p></div>
-                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;">infoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfoinfo</p></div>
+                        <div class="col-10"><p style="text-align: left; word-wrap: break-word;" th:text="${productGroup.precautions}"></p></div>
                         <hr>
                         <hr>
                     </div>
