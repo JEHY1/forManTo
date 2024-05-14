@@ -30,4 +30,9 @@ public class ProductService {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("not found product"));
     }
+
+    public List<Product> findAllProductByProductIdIn(List<Long> productIds){
+        return productRepository.findAllByProductIdIn(productIds)
+                .orElseThrow(() -> new IllegalArgumentException("not found product"));
+    }
 }

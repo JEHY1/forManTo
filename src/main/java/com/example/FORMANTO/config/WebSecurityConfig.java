@@ -17,24 +17,23 @@ public class WebSecurityConfig {
     private final UserDetailService userDetailService;
 
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(){
+    public WebSecurityCustomizer webSecurityCustomizer(){ //현재 테스트 단계로 모든 요청에 대해 예외로 한다
         return web -> web.ignoring()
                 .requestMatchers("/**");
-
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //filter chain
         return http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/signup", "/user").permitAll()
-                .anyRequest().authenticated()
-        ).formLogin(in -> in
+                .requestMatchers("/login", "/signup", "/user", "/main").permitAll() //해당 요청에 대해 인증 인가 x
+                .anyRequest().authenticated() //나머지 요청에 대해 인증
+        ).formLogin(in -> in //로그인 설정
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")
-        ).logout(out -> out
-                .logoutSuccessUrl("/home")
+                .defaultSuccessUrl("/main")
+        ).logout(out -> out //로그아웃 설정
+                .logoutSuccessUrl("/main")
                 .invalidateHttpSession(true)
-        ).csrf(csrf -> csrf
+        ).csrf(csrf -> csrf //csrf 설정 테스트 단계로 사용하지 않음
                 .disable()
         ).build();
     }
@@ -42,10 +41,10 @@ public class WebSecurityConfig {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
-    }
+    } //암호화 bean
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(){
+    public DaoAuthenticationProvider daoAuthenticationProvider(){ //provider bean
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailService);
         provider.setPasswordEncoder(bCryptPasswordEncoder());

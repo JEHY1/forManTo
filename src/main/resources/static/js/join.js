@@ -55,7 +55,6 @@ if(issueAuthenticationKeyButton){
                             email: document.getElementById('email').value,
                             phoneNum : document.getElementById('phoneNum').value,
                             adminKey: document.getElementById('adminKey').value
-
                         });
 
                         httpRequest(`/user`, 'POST', body2, signupSuccess, signupFail);
@@ -63,8 +62,6 @@ if(issueAuthenticationKeyButton){
                     else{
                         alert('not matched');
                     }
-
-
                 });
                 document.body.appendChild(signupButton);
             }
@@ -83,38 +80,39 @@ if(issueAuthenticationKeyButton){
     });
 }
 
+const loginButton = document.getElementById('login-btn');
 
-//
+if(loginButton){
+    loginButton.addEventListener('click', () => {
+        console.log('action');
+        let body = JSON.stringify({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        });
 
-//const checkBoxs = document.getElementsByClassName('checkBox');
-//
-//if(checkBoxs){
-//    Array.from(checkBoxs).forEach(checkBox => {
-//        checkBox.addEventListener('change', function() {
-//
-//         console.log('is changed');
-//            if(this.checked){
-//
-//
-//                const label = this.previousElementSibling;
-//                if(label){
-//                    this.value = label.textContent.trim();
-//                }
-//            }
-//            else{
-//                this.value = null;
-//            }
-//        });
-//    });
-//}
+        function loginSuccess(){
+            alert('login success');
+        }
 
-function toList(values){
+        function loginFail(){
+            alert('login Fail');
+        }
+
+        httpRequest(`/login`, 'POST', body, loginSuccess, loginFail);
+    });
+}
+
+
+
+
+function toList(elements){
     let list = [];
-    values.forEach(value => {
-        if(value.value != ''){
-            list.push(value.value);
+    elements.forEach(element => {
+        if(element.value != ''){
+            list.push(element.value);
         }
     });
-
     return list;
 }
+
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <title>관리자 페이지</title>
+
+</head>
+
+<body>
+
+
+<header class="grid-container-header">
+    <div class="top_util">
+        <strong>관리자 화면</strong>
+        <span> | </span>
+        <a href="#">로그아웃</a>
+
+    </div>
+    <div class="header_inner">
+        <img src="log.jpg" alt="포맨토 로고">
+
+        <div class="admin">
+            <h1>관리자 페이지</h1>
+        </div>
+
+        <div>
+            <img src="https://pics.gmarket.co.kr/pc/single/kr/common/image__header-mypage.svg" alt="마이페이지 아이콘">
+
+            <div class="cart1">
+                <img src="https://pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="장바구니">
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="grid-container">
+    <aside class="grid-container-aside">
+        <div class="admin-list">
+            <h3>관리자 목록</h3>
+
+            <ul>
+                <li>
+                    <a href="#">회원관리</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">상품등록</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">상품목록</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">주문내역</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">게시판</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="grid-container-main">
+
+        <form method="" action="" >
+            <fieldset>
+                <legend id="container"><h1>상품 등록</h1></legend>
+
+                <ul id="add" autocapitalize="off">
+                    <li>
+                        <label for="prd_name">상품명 <strong>(필수)</strong></label>
+                        <input class="form-contorl" type="text" id="prd_name" required autofocus>
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_price">판매가격 <strong>(필수)</strong></label>
+                        <input class="form-contorl" type="number" id="prd_price" placeholder="숫자만 표기" required>
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_sale">세일가격 </label>
+                        <input class="form-contorl" type="text" id="prd_sale" placeholder="원가격입력" >
+                        <span>원</span><br>
+                        <input type="text" id="prd_rate" placeholder="할인률">
+                        <span>%</span><br>
+
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_code">상품코드, <strong>(필수)</strong></label>
+                        <input class="form-contorl" type="text" id="prd_code" required >
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_quntity">제품수량 <strong>(필수)</strong></label>
+                        <input class="form-contorl" type="number" id="prd_quntity" placeholder="숫자만 표기" required >
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_title">상품 분류</label>
+                        <select class="form-contorl" id="prd_title">
+                            <option value="skinCare" selected>스킨케어</option>
+                            <option value="makeUp">메이크업</option>
+                            <option value="sunCare">선케어</option>
+                            <option value="bodyCare">바디케어</option>
+                            <option value="hairCare">헤어케어</option>
+                            <option value="cleansing">클렌징</option>
+                            <option value="purfume">향수</option>
+                        </select>
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_option">상품 옵션</label>
+                        <input class="form-contorl" type="text" id="prd_option">
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_img">상품이미지 등록</label>
+                        <input class="form-contorl" type="file" id="prd_img" multiple >
+                    </li>
+                    <hr>
+                    <li>
+                        <label for="prd_detail">제품설명</label>
+                        <textarea class="form-contorl" id="prd_detail" cols="40" rows="4"></textarea>
+                    </li>
+                </ul>
+            </fieldset>
+
+
+            <div>
+                <input type="submit" value="등록하기">
+                <input type="reset" value="취소하기">
+            </div>
+        </form>
+
+    </main>
+
+</div>
+
+
+
+<!-- 정해지지 않은 푸터 -->
+<footer>
+    <div>뭐 넣을지 모름
+        <p>
+            to do...
+        </p>
+        카테고리 정렬, 체크박스 선택 ,주문 링크,
+    </div>
+</footer>
+
+</div>
+
+
+
+</body>
+
+</html>

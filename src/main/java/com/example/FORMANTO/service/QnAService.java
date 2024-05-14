@@ -1,6 +1,7 @@
 package com.example.FORMANTO.service;
 
 import com.example.FORMANTO.domain.QnA;
+import com.example.FORMANTO.dto.QnAQuestionSubmitRequest;
 import com.example.FORMANTO.dto.QnAViewResponse;
 import com.example.FORMANTO.repository.QnARepository;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,26 @@ public class QnAService {
                     .build());
         });
         return QnAResponse;
+    }
+
+    public QnA save(QnAQuestionSubmitRequest request){
+        System.err.println(request.toString());
+
+        QnA qnA = QnA.builder()
+                .productGroupId(request.getProductGroupId())
+                .question(request.getQuestion())
+                .status("aaa")
+                .customerId(1L)
+                .answer("aaaa")
+                .build();
+
+        System.err.println(qnA.toString());
+        return qnARepository.save(QnA.builder()
+                .productGroupId(request.getProductGroupId())
+                .question(request.getQuestion())
+                .customerId(1L)
+                .status("답변대기")
+                .answer("답변을 기다리는 중...")
+                .build());
     }
 }

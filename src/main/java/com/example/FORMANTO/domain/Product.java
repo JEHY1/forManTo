@@ -1,15 +1,13 @@
 package com.example.FORMANTO.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "product_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@ToString
 public class Product {
 
     @Id
@@ -34,7 +32,7 @@ public class Product {
 
 
     @Builder
-    public Product(Long productGroupId, String name, int price, int quantity, String imgSrc) {
+    public Product(Long productGroupId, String name, int price, int quantity, String imgSrc) { //product_id = A.I
         this.productGroupId = productGroupId;
         this.name = name;
         this.price = price;

@@ -27,7 +27,7 @@ public class Cart {
     private int count;
 
     @Builder
-    public Cart(Long productId, Long customerId, int count){
+    public Cart(Long productId, Long customerId, int count){ //cart_Id = A.I
         this.productId = productId;
         this.customerId = customerId;
         this.count = count;

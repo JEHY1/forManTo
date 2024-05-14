@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+</head>
+<body>
+<h1>Order Confirmation</h1>
+<h2>Product IDs:</h2>
+<ul>
+    <li th:each="id : ${ids}" th:text="${id}"></li>
+</ul>
+<h2>Counts:</h2>
+<ul>
+    <li th:each="count : ${counts}" th:text="${count}"></li>
+</ul>
+</body>
+
+</html>

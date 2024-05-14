@@ -18,9 +18,9 @@ public class JoinApiController {
     private final CustomerService customerService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    //미완성
     @PostMapping("/user")
     public ResponseEntity<Customer> user(@RequestBody JoinRequest request){
-        System.err.println("/user1");
 
         if(request.getAdminKey() == null){
             System.err.println("admin key is null");

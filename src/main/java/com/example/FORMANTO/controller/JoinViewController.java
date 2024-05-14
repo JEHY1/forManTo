@@ -10,12 +10,12 @@ public class JoinViewController {
 
     @GetMapping("/login")
     public String login(){
-        return "/join/login";
+        return "join/login";
     }
 
     @GetMapping("/signup")
     public String signup(){
-        return "/join/signup";
+        return "join/signup";
     }
 
 }

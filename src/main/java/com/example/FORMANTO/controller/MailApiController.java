@@ -15,7 +15,7 @@ public class MailApiController {
 
     private final MailService mailService;
 
-    @PostMapping("/authMail")
+    @PostMapping("/authMail") //메일 전송을 위한 api 인증용 키를 리턴
     public ResponseEntity<AuthKeyResponse> sendAuthMail(@RequestBody sendAuthMailRequest request){
 
         return ResponseEntity.ok()

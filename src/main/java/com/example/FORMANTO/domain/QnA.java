@@ -1,10 +1,9 @@
 package com.example.FORMANTO.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.xml.stream.FactoryConfigurationError;
 import java.time.LocalDateTime;
@@ -12,7 +11,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "QnA_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 @Getter
+@ToString
 public class QnA {
 
     @Id
@@ -26,6 +27,7 @@ public class QnA {
     @Column(name = "product_group_id", nullable = false)
     private Long productGroupId;
 
+    @CreatedDate
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 

@@ -67,99 +67,75 @@
 
 
     </style>
+    <link rel="stylesheet" href="/css/cart.css">
 </head>
 <body>
+
+<header class="grid-container-header">
+    <div class="top_util">
+        <strong>이용자 닉네임</strong>
+        <span> | </span>
+        <a href="#">로그아웃</a>
+
+    </div>
+    <div class="header_inner">
+        <img src="https://static.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영 로고">
+
+        <div class="search">
+            <input type="text" placeholder="검색어 입력">
+            <img src="https://bullang.com/morenvyimg/top_search.svg" alt="Search Icon">
+        </div>
+
+        <div>
+            <img src="https://pics.gmarket.co.kr/pc/single/kr/common/image__header-mypage.svg" alt="마이페이지 아이콘">
+
+            <div class="cart1">
+                <img src="https://pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="장바구니">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 카테고리 -->
+    <div class="top_cartegory">
+
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                   aria-expanded="false">카테고리</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+        </ul>
+
+
+    </div>
+
+</header>
 
 <h1 class="move-btn left"><</h1>
 <h1 class="move-btn right">></h1>
 
-
-
-
-
-
-
 <div class="container header" id="headid">
-    <div class="row">
-        <div class="col-3">
-            <img src="#">
-        </div>
-        <div class="col-5">
-
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping"><img src="#"></span>
-                <input type="text" class="form-control" placeholder="제품 이름" aria-label="제품 이름" aria-describedby="addon-wrapping">
-            </div>
-
-        </div>
-        <div class="col">
-            <img src="#">
-        </div>
-        <div class="col">
-            <img src="#">
-        </div>
-    </div>
-
-    <div class="row">
-        <div th:each="brand : ${brands}" class="col brands">
-            <div>
-                <img th:src="${brand.src}">
-                <p th:text="${brand.name}"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div class="row">
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand1</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand2</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand3</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand4</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand5</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand6</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand7</p>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <img src="#">
-                <p>brand8</p>
-            </div>
-        </div>
-    </div> -->
-
     <div class="container" style="min-width:1200px">
         <div class="row">
             <div class="col-5" style="height: 500px;">
@@ -211,28 +187,6 @@
                                 상품 선택
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 620px">
-                                <!-- <li class="dropdown-item">
-                                    상품 예제
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="#" alt="상품 이미지">
-                                            </div>
-                                            <div class="col-8" th:text="${product.name}">test</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="dropdown-item">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="#" alt="상품 이미지">
-                                            </div>
-                                            <div class="col-8" th:text="${product.name}">test</div>
-                                        </div>
-                                    </div>
-                                </li> -->
-
                                 <li th:each="product : ${products}" class="dropdown-item" >
                                     <input type="hidden" class="productNames" th:value="${product.name}">
                                     <input type="hidden" class="productIds" th:value="${product.productId}">
@@ -270,7 +224,7 @@
 
                     <div class="row text-center">
                         <div class="col" style="margin-top: 16px; padding-left: 16px;">
-                            <button type="button" class="btn btn-outline-primary" id="#" style="width:203px;">바로구매</button>
+                            <button type="button" class="btn btn-outline-primary" id="order-btn" style="width:203px;">바로구매</button>
                             <button type="button" class="btn btn-outline-primary" id="#" style="width:203px;">장바구니</button>
                             <button type="button" class="btn btn-outline-primary" id="#" style="width:203px;">선물하기</button>
                         </div>
@@ -319,8 +273,8 @@
                 </div>
 
             </div>
-            <div class="tab-pane fade" id="nav-productInfo" role="tabpanel" aria-labelledby="nav-profile-tab" style="margin-bottom: 30px;">
-                <h3 style="margin-top: 30px;">상품정보 제공 공시</h3>
+            <div class="tab-pane fade mb-5" id="nav-productInfo" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <h3 class="mt-5">상품정보 제공 공시</h3>
                 <div class="container">
                     <div class="row">
                         <hr>
@@ -476,7 +430,31 @@
             <div class="tab-pane fade" id="nav-QnA" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <h3 style="margin-top: 30px;">QnA</h3>
                 <div class="row">
-                    <button type="button" class="btn btn-outline-secondary col-2 ms-auto mb-4">작성</button>
+
+                    <a class="btn btn-outline-secondary col-2 mb-5 ms-auto" data-bs-toggle="modal" href="#exampleModalToggle" role="button">작성</a>
+                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalToggleLabel">QnA</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea id="question"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" id="question-btn" data-bs-dismiss="modal" aria-label="Close">등록</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
                 </div>
 
                 <div class="accordion" id="accordionExample">
@@ -529,6 +507,10 @@
     </div>
 </div>
 
+<input type="hidden" id="productGroupId" th:value="${productGroup.productGroupId}">
+
 <script src="/js/productDetail.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/address.js"></script>
 </body>
 </html>
