@@ -145,12 +145,12 @@
         <h3 class="mt-5">결제 수단</h3>
         <div class="container">
 
-            <label><input type="checkbox" class="payType" value="option1" onchange="test(this)">신용카드</label>
-            <label><input type="checkbox" class="payType" value="option2" onchange="test(this)">PAYCO</label>
-            <label><input type="checkbox" class="payType" value="option3" onchange="test(this)">카카오페이</label>
-            <label><input type="checkbox" class="payType" value="option4" onchange="test(this)">네이버페이</label>
-            <label><input type="checkbox" class="payType" value="option5" onchange="test(this)">휴대폰 결제</label>
-            <label><input type="checkbox" class="payType" value="option6" onchange="test(this)">계좌이체</label>
+            <label><input type="checkbox" class="payType" value="option1" onchange="checkBox(this)">신용카드</label>
+            <label><input type="checkbox" class="payType" value="option2" onchange="checkBox(this)">PAYCO</label>
+            <label><input type="checkbox" class="payType" value="option3" onchange="checkBox(this)">카카오페이</label>
+            <label><input type="checkbox" class="payType" value="option4" onchange="checkBox(this)">네이버페이</label>
+            <label><input type="checkbox" class="payType" value="option5" onchange="checkBox(this)">휴대폰 결제</label>
+            <label><input type="checkbox" class="payType" value="option6" onchange="checkBox(this)">계좌이체</label>
             <input type="hidden" id="paymentType">
         </div>
     </div>
@@ -176,6 +176,8 @@
 
 </div>
 
+
+
 <!-- 정해지지 않은 푸터 -->
 <footer class="mt-5">
     <div>뭐 넣을지 모름
@@ -185,6 +187,9 @@
         카테고리 정렬, 체크박스 선택 ,주문 링크,
     </div>
 </footer>
+<div th:each="cartId : ${cartIds}">
+    <input type="hidden" class="cartIds" th:value="${cartId}">
+</div>
 
 </body>
 

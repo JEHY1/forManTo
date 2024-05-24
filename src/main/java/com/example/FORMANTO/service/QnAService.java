@@ -1,8 +1,8 @@
 package com.example.FORMANTO.service;
 
 import com.example.FORMANTO.domain.QnA;
-import com.example.FORMANTO.dto.QnAQuestionSubmitRequest;
-import com.example.FORMANTO.dto.QnAViewResponse;
+import com.example.FORMANTO.dto.productDetail.QnAQuestionSubmitRequest;
+import com.example.FORMANTO.dto.productDetail.QnAViewResponse;
 import com.example.FORMANTO.repository.QnARepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

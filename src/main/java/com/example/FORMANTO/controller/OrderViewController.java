@@ -1,8 +1,8 @@
 package com.example.FORMANTO.controller;
 
 import com.example.FORMANTO.domain.Product;
-import com.example.FORMANTO.dto.OrderRequest;
-import com.example.FORMANTO.dto.OrderViewResponse;
+import com.example.FORMANTO.dto.order.OrderRequest;
+import com.example.FORMANTO.dto.order.OrderViewResponse;
 import com.example.FORMANTO.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -32,6 +32,8 @@ public class OrderViewController {
 
         model.addAttribute("selectedProducts", selectedProducts);
         model.addAttribute("totalPrice", request.getTotalPrice());
+        model.addAttribute("cartIds", request.getCartIds());
+
 
 
         return "/user/order";

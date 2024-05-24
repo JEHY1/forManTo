@@ -14,7 +14,7 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_id", updatable = false)
+    @Column(name = "cart_id", updatable  =false)
     private Long cartId;
 
     @Column(name = "product_id", nullable = false)
@@ -32,4 +32,9 @@ public class Cart {
         this.customerId = customerId;
         this.count = count;
     }
+
+    public void updateSelect(int count){
+        this.count = count;
+    }
+    public void addSelect(int count){this.count = this.count + count > 10 ? 10 : this.count + count;}
 }

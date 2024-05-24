@@ -1,6 +1,6 @@
 <!--세정-->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -246,7 +246,6 @@
         }
 
 
-
     </style>
 </head>
 
@@ -347,9 +346,10 @@
         <h3 style="  text-align: left; ">QnA</h3>
         <hr>
 
-        <form method="" action="">
+        <form method="post" action="/review">
             <table class="table">
                 <thead class="table-light">
+
                 <tr>
                     <th style="min-width: 300px; max-width: 300px; height: 100%; ">상품
                     </th>
@@ -358,23 +358,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr th:each="view : ${views}">
                     <td>
-                        <img src="#" style="width: 85px; height: 85px;">
+                        <img src="https://ssl.pstatic.net/melona/libs/1378/1378592/98b3738dc17cc2456043_20240503142548874.png"
+                             style="width: 85px; height: 85px;">
                         <span>회사이름</span>
                         <br>
                         <span>제품이름</span>
 
                     </td>
-                    <td>작성기간</td>
-                    <td>
+                    <td th:text="${view.deadline}">작성기간</td>
 
+                    <td>
 
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">
                             리뷰작성
                         </button>
+
 
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
@@ -389,7 +391,8 @@
                                     <div class="modal-body">
                                         <div class="topIntroduction">
                                             <dl>
-                                                <img src="#" style="width: 85px; height: 85px;">
+                                                <img src="https://ssl.pstatic.net/melona/libs/1378/1378592/98b3738dc17cc2456043_20240503142548874.png"
+                                                     style="width: 85px; height: 85px;">
                                                 <dt>회사이름</dt>
                                                 <dd>제품명</dd>
                                             </dl>
@@ -397,10 +400,11 @@
 
                                         <p style="text-align: left; padding-top : 10px">솔직한 상품 리뷰를 남겨주세요</p>
                                         <div class="line">
-                                                    <textarea placeholder="리뷰를 작성해주세요." required
-                                                              class="txtGdasCont" cols="40" rows="10"
-                                                              id="writeReview" name="writeReviewName"></textarea>
+                                            <!--                                            required="required" 넣으면 db에 안넘어가짐-->
+                                            <textarea placeholder="리뷰를 작성해주세요." class="txtGdasCont" cols="40" rows="10"  name="content" ></textarea>
+                                            <!--                                            <input type="text" id="writeReview" name="content">-->
                                         </div>
+
 
                                         <div class="imgpoto">
                                             <strong>포토</strong>
@@ -408,19 +412,19 @@
                                                 <li>
                                                     <div class="mb-3">
                                                         <input class="form-control form-control-sm" id="poto1"
-                                                               type="file" name="potoName1">
+                                                               type="file" name="photoName1">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="mb-3">
                                                         <input class="form-control form-control-sm" id="poto2"
-                                                               type="file" name="potoName2">
+                                                               type="file" name="photoName2">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="mb-3">
                                                         <input class="form-control form-control-sm" id="poto3"
-                                                               type="file" name="potoName3">
+                                                               type="file" name="photoName3">
                                                     </div>
                                                 </li>
 
@@ -431,9 +435,10 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="reset" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" id="dateExtraction"
-                                                onclick="sendData()">등록하기</button>
+                                                data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary" onclick="sendData()">등록하기
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -474,8 +479,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-<script src="MyPageReview.js"></script>
+<!--<script src="MyPageReview.js"></script>-->
 
 </body>
+
 
 </html>

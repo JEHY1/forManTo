@@ -1,4 +1,4 @@
-package com.example.FORMANTO.dto;
+package com.example.FORMANTO.dto.order;
 
 import com.example.FORMANTO.controller.JoinViewController;
 import lombok.Getter;
@@ -13,5 +13,6 @@ public class OrderRequest {
     private List<Long> productIds;
     private List<Integer> counts;
     private int totalPrice;
+    private List<Long> cartIds;
 
 }

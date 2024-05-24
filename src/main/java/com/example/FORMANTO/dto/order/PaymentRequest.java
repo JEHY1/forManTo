@@ -1,4 +1,4 @@
-package com.example.FORMANTO.dto;
+package com.example.FORMANTO.dto.order;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,4 +19,5 @@ public class PaymentRequest {
     private List<Integer> productCounts;
     private String receiver;
     private String receiverPhone;
+    private List<Long> cartIds;
 }

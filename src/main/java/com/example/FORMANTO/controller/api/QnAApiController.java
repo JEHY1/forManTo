@@ -1,7 +1,7 @@
-package com.example.FORMANTO.controller;
+package com.example.FORMANTO.controller.api;
 
 import com.example.FORMANTO.domain.QnA;
-import com.example.FORMANTO.dto.QnAQuestionSubmitRequest;
+import com.example.FORMANTO.dto.productDetail.QnAQuestionSubmitRequest;
 import com.example.FORMANTO.service.QnAService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -25,9 +25,7 @@ public class ProductViewController {
     private final ProductService productService;
 
     @GetMapping("/productDetail/{id}")
-    public String productDetail(@PathVariable long id, @RequestParam(required = false) List<Long> idList, Model model, Principal principal){
-
-        System.err.println(idList);
+    public String productDetail(@PathVariable long id, @RequestParam(required = false) List<Long> PGL, Model model, Principal principal){
 
         ProductGroup productGroup = productService.findProductGroupByProductGroupId(id);
         //path로 전달 받은 id로 product_group_tb 에서 검색
@@ -36,7 +34,8 @@ public class ProductViewController {
             model.addAttribute("QnAs", qnAService.productQnA(id));
             model.addAttribute("products", productService.findProductByProductGroupId(id));
             model.addAttribute("productGroup", productGroup); //각 속성에 맞게 넘겨줌
-
+            model.addAttribute("PGL", PGL);
+            model.addAttribute("principal", principal);
         }
         return "product/productDetail";
     }

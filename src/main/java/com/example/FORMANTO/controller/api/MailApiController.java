@@ -1,7 +1,7 @@
-package com.example.FORMANTO.controller;
+package com.example.FORMANTO.controller.api;
 
-import com.example.FORMANTO.dto.AuthKeyResponse;
-import com.example.FORMANTO.dto.sendAuthMailRequest;
+import com.example.FORMANTO.dto.signup.AuthKeyResponse;
+import com.example.FORMANTO.dto.signup.sendAuthMailRequest;
 import com.example.FORMANTO.service.MailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

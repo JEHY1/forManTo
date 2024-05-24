@@ -5,12 +5,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "review_tb")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 public class Review {
 
@@ -25,6 +28,7 @@ public class Review {
     @Column(name = "product_group_id", nullable = false)
     private Long productGroupId;
 
+    @CreatedDate
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 

@@ -19,13 +19,13 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){ //현재 테스트 단계로 모든 요청에 대해 예외로 한다
         return web -> web.ignoring()
-                .requestMatchers("/**");
+                .requestMatchers("/img/**", "/js/**", "/css/**");
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //filter chain
         return http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/signup", "/user", "/main").permitAll() //해당 요청에 대해 인증 인가 x
+                .requestMatchers("/login", "/signup", "/user", "/main", "/productDetail/**", "/order", "/api/payment", "/api/QnAQuestion" ,"/authMail").permitAll() //해당 요청에 대해 인증 인가 x
                 .anyRequest().authenticated() //나머지 요청에 대해 인증
         ).formLogin(in -> in //로그인 설정
                 .loginPage("/login")

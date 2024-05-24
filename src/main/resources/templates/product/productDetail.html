@@ -132,8 +132,8 @@
 
 </header>
 
-<h1 class="move-btn left"><</h1>
-<h1 class="move-btn right">></h1>
+<h1 class="move-btn left" id="prevProductGroup-btn" th:if="${PGL != null}">-</h1>
+<h1 class="move-btn right" id="nextProductGroup-btn" th:if="${PGL != null}">+</h1>
 
 <div class="container header" id="headid">
     <div class="container" style="min-width:1200px">
@@ -222,11 +222,13 @@
 
 
 
-                    <div class="row text-center">
-                        <div class="col" style="margin-top: 16px; padding-left: 16px;">
-                            <button type="button" class="btn btn-outline-primary" id="order-btn" style="width:203px;">바로구매</button>
-                            <button type="button" class="btn btn-outline-primary" id="#" style="width:203px;">장바구니</button>
-                            <button type="button" class="btn btn-outline-primary" id="#" style="width:203px;">선물하기</button>
+                    <div class="row text-center ms-4">
+                        <div class="col row mt-4 ps-4">
+                            <div class="col"><button type="button" class="btn btn-outline-primary w-100" id="order-btn">바로구매</button></div>
+                            <div class="col" th:if="${principal != null}"><button type="button" class="btn btn-outline-primary w-100" id="cart-btn">장바구니</button></div>
+                            <div class="col" th:if="${principal != null}"><button type="button" class="btn btn-outline-primary w-100" id="#">선물하기</button></div>
+
+
                         </div>
                     </div>
 
@@ -508,9 +510,13 @@
 </div>
 
 <input type="hidden" id="productGroupId" th:value="${productGroup.productGroupId}">
+<div th:each="productGroup : ${PGL}">
+    <input type="hidden" class="PGL" th:value="${productGroup}">
+</div>
 
 <script src="/js/productDetail.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/address.js"></script>
+<script src="/js/payment.js"></script>
 </body>
 </html>

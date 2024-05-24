@@ -1,4 +1,4 @@
-package com.example.FORMANTO.dto;
+package com.example.FORMANTO.dto.signup;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package com.example.FORMANTO.dto;
+package com.example.FORMANTO.dto.productDetail;
 
 import lombok.Getter;
 import lombok.Setter;

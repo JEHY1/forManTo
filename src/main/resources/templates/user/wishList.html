@@ -20,7 +20,7 @@
     <div class="top_util">
         <strong>이용자 닉네임</strong>
         <span> | </span>
-        <a href="#">로그아웃</a>
+        <a>로그아웃</a>
 
     </div>
     <div class="header_inner">
@@ -46,7 +46,7 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
                    aria-expanded="false">카테고리</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -123,17 +123,17 @@
                     </thead>
 
                     <tbody>
-                    <tr>
+                    <tr th:each="view : ${wishviews}">
                         <td><input type="checkbox" class="chk"></td>
                         <td style="min-width: 430px; max-width: 430px; height: 100%;  ">
                             <img src="young.png" width="85px" height="85px">
-                            <span>회사이름</span>
-                            <p> 세럼50ml</p>
+                            <span th:text="${view.company}">회사이름</span>
+                            <p th:text="${view.name}"> 세럼50ml</p>
 
 
                         </td>
                         <!-- <td><select name="count" onchange="alert('수량 변경이 완료되었습니다')"> -->
-                        <td><span class="originalPrice">5000</span></td>
+                        <td><span class="originalPrice" th:text="${view.price}">5000</span></td>
                     </tr>
 
                     <!-- <script>

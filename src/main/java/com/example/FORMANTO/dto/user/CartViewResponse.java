@@ -1,4 +1,4 @@
-package com.example.FORMANTO.dto;
+package com.example.FORMANTO.dto.user;
 
 import lombok.*;
 
@@ -8,14 +8,18 @@ import lombok.*;
 
 public class CartViewResponse {
 
+    private Long cartId;
+    private Long productId;
     private int count;
     private String productName;
     private String company;
     private int price;
 
     @Builder
-    public CartViewResponse(String productName, String company, int price, int count){
+    public CartViewResponse(Long cartId, String productName, Long productId, String company, int price, int count){
+        this.cartId = cartId;
         this.productName = productName;
+        this.productId = productId;
         this.company = company;
         this.price = price;
         this.count = count;

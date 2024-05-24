@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "sale_product_tb")
 @Getter
@@ -26,10 +28,20 @@ public class SaleProduct {
     @Column(name = "total_quantity", nullable = false)
     private int totalQuantity;
 
+    @Column(name = "review_id")
+    private Long reviewId;
+
+    @Column(name = "review_deadline", nullable = false)
+    private LocalDateTime reviewDeadline;
+
     @Builder
-    public SaleProduct(Long productId, Long paymentId, int totalQuantity) {
+    public SaleProduct(Long productId, Long paymentId, int totalQuantity, Long reviewId, LocalDateTime reviewDeadline) {
         this.productId = productId;
         this.paymentId = paymentId;
         this.totalQuantity = totalQuantity;
+        this.reviewId = reviewId;
+        this.reviewDeadline = reviewDeadline;
     }
+
+
 }

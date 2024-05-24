@@ -148,11 +148,18 @@ const orderButton = document.getElementById('order-btn');
 if (orderButton) {
     orderButton.addEventListener('click', () => {
         console.log("clicked");
+
+        if(document.getElementsByClassName('selectedProductIds').length === 0){
+            alert('상품을 선택해 주세요');
+            return;
+        }
+
         let body = JSON.stringify({
             productIds: toList(Array.from(document.getElementsByClassName('selectedProductIds'))),
             counts: toList(Array.from(document.getElementsByClassName('orderQuantitys'))),
             totalPrice : document.getElementById('totalPrice').value
         });
+
 
         httpRequest(`/order`, 'POST', body)
             .then(response => {
@@ -202,24 +209,71 @@ if(questionButton){
     });
 }
 
-const paymentButton =document.getElementById('payment-btn');
+const prevProductGroupButton = document.getElementById('prevProductGroup-btn');
 
-function payment(){
-    console.log('click');
-    let body = JSON.stringify({
-        paymentPrice : parseInt(document.getElementById('paymentPrice').textContent),
-        paymentType : document.getElementById('paymentType').value,
-        address : document.getElementById('sample6_address').value + ' ' + document.getElementById('sample6_detailAddress').value,
-        deliveryFee : parseInt(document.getElementById('deliveryFee').textContent),
-        productIds : toList(Array.from(document.getElementsByClassName('productIds'))),
-        productCounts : toList(Array.from(document.getElementsByClassName('productCounts'))),
-        receiver : document.getElementById('receiver').value,
-        receiverPhone : document.getElementById('receiverPhone').value
+if(prevProductGroupButton){
+    prevProductGroupButton.addEventListener('click', () => {
+        console.log('click');
+
+        let param = '?'
+        let PGL = toList(Array.from(document.getElementsByClassName('PGL')));
+        PGL.forEach(id => param += ('PGL=' + id + '&'));
+        let productGroupId = document.getElementById('productGroupId').value;
+        if(PGL.indexOf(productGroupId) - 1 >= 0){
+            location.replace(PGL[PGL.indexOf(productGroupId) - 1] + param);
+        }
+        else{
+             location.replace(PGL[PGL.length - 1] + param);
+        }
+    })
+}
+
+const nextProductGroupButton = document.getElementById('nextProductGroup-btn');
+
+
+
+if(nextProductGroupButton){
+    nextProductGroupButton.addEventListener('click', () => {
+        console.log('click');
+
+        let param = '?'
+        let PGL = toList(Array.from(document.getElementsByClassName('PGL')));
+        PGL.forEach(id => param += ('PGL=' + id + '&'));
+        let productGroupId = document.getElementById('productGroupId').value;
+        if(PGL.indexOf(productGroupId) + 1 < PGL.length){
+            location.replace(PGL[PGL.indexOf(productGroupId) + 1] + param);
+        }
+        else{
+             location.replace(PGL[0] + param);
+        }
     });
+}
 
-    console.log(body);
+const cartButton = document.getElementById('cart-btn');
 
-    httpRequest(`/api/payment`, 'POST', body);
+if(cartButton){
+    cartButton.addEventListener('click', () => {
+        console.log('cartButton click');
+        if(document.getElementsByClassName('selectedProductIds').length === 0){
+            alert('상품을 선택해 주세요');
+            return;
+        }
+
+        let body = JSON.stringify({
+            productIds: toList(Array.from(document.getElementsByClassName('selectedProductIds'))),
+            counts: toList(Array.from(document.getElementsByClassName('orderQuantitys')))
+        });
+
+        httpRequest(`/api/cart`, 'POST', body)
+        .then(response => {
+            if(response.ok){
+                alert('장바구니 추가 성공');
+            }
+            else{
+                alert('장바구니 추가 실패');
+            }
+        });
+    });
 }
 
 
@@ -241,14 +295,4 @@ function toList(elements){
         }
     });
     return list;
-}
-
-function test(thisCheckBox){
-    const checkboxes = Array.from(document.getElementsByClassName('payType'));
-    document.getElementById('paymentType').value = thisCheckBox.parentElement.textContent;
-    checkboxes.forEach(checkbox => {
-        if (checkbox !== thisCheckBox) {
-            checkbox.checked = false;
-        }
-    });
 }

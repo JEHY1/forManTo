@@ -1,7 +1,7 @@
-package com.example.FORMANTO.controller;
+package com.example.FORMANTO.controller.api;
 
 import com.example.FORMANTO.domain.Payment;
-import com.example.FORMANTO.dto.PaymentRequest;
+import com.example.FORMANTO.dto.order.PaymentRequest;
 import com.example.FORMANTO.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

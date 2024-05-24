@@ -1,7 +1,7 @@
-package com.example.FORMANTO.controller;
+package com.example.FORMANTO.controller.api;
 
 import com.example.FORMANTO.domain.Customer;
-import com.example.FORMANTO.dto.JoinRequest;
+import com.example.FORMANTO.dto.signup.JoinRequest;
 import com.example.FORMANTO.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
