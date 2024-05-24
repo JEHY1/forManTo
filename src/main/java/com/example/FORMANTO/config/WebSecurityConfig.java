@@ -19,7 +19,7 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){ //현재 테스트 단계로 모든 요청에 대해 예외로 한다
         return web -> web.ignoring()
-                .requestMatchers("/img/**", "/js/**", "/css/**");
+                .requestMatchers("/img/**", "/js/**", "/css/**", "/**");
     }
 
     @Bean
