@@ -147,11 +147,11 @@ public class AddItemsController {
 //    }
 
 
-    @GetMapping("/adminitemList")
+    @GetMapping("/admin")
     public String itemList(Model model){
         List<ProductGroup> productGroupsEntity = productGroupRepository.findAll();
         model.addAttribute("additemlist", productGroupsEntity);
-        return "admin/adminItemList";
+        return "admin/adminMenu";
 
     }
 
